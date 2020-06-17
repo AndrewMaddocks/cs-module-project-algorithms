@@ -2,10 +2,40 @@
 Input: a List of integers where every int except one shows up twice
 Returns: an integer
 '''
-def single_number(arr):
-    # Your code here
+# ```
+# Sample input: [2, 2, 1]
+# Expected output: 1
+# ```
+# I need to loop through arr
+# inner loop
+# base case when we are left with one element
+# recursive function
 
-    pass
+# remove numbers that are doubled if current and match are equal
+# base case
+# if len(arr) == 1
+#     return arr[0]
+
+
+def single_number(nums):
+
+    for num in nums:
+        current = 0
+        match = 1
+        if len(nums) == 1:
+            return nums[0]
+
+        elif nums[current] != nums[match]:
+            match += 1
+
+        else:
+            nums.pop(match)
+            nums.pop(current)
+            return single_number(nums)
+    return nums[0]
+
+    # remove els
+    # single_number(arr)
 
 
 if __name__ == '__main__':
