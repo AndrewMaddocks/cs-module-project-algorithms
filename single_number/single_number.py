@@ -17,25 +17,38 @@ Returns: an integer
 #     return arr[0]
 
 
+# def single_number(nums):
+
+#     for num in nums:
+#         current = 0
+#         match = 1
+#         if len(nums) == 1:
+#             return nums[0]
+
+#         elif nums[current] != nums[match]:
+#             match += 1
+
+#         else:
+#             nums.pop(match)
+#             nums.pop(current)
+#             return single_number(nums)
+#     return nums[0]
+
+#     # remove els
+#     # single_number(arr)
+
 def single_number(nums):
+    counts = {}
 
     for num in nums:
-        current = 0
-        match = 1
-        if len(nums) == 1:
-            return nums[0]
-
-        elif nums[current] != nums[match]:
-            match += 1
-
+        if num in counts:
+            del counts[num]
         else:
-            nums.pop(match)
-            nums.pop(current)
-            return single_number(nums)
-    return nums[0]
-
-    # remove els
-    # single_number(arr)
+            counts[num] = 1
+    return counts[counts.keys()[0]]
+    for k, v in counts.items():  # O(1)
+        if v == 1:
+            return k
 
 
 if __name__ == '__main__':
